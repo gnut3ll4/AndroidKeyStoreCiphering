@@ -18,6 +18,7 @@ package com.gnut3ll4.android.basicandroidkeystore;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -98,7 +99,7 @@ public class MainActivity extends FragmentActivity {
                         cipher.init(Cipher.ENCRYPT_MODE, ks.getCertificate(ALIAS).getPublicKey());
                         encryptedBytes = cipher.doFinal(editText.getText().toString().getBytes());
 
-                        Log.d(TAG, "Encrypted bytes : " + new String(encryptedBytes, "UTF-8"));
+                        Log.d(TAG, "Encrypted bytes : " + Base64.encodeToString(encryptedBytes, Base64.DEFAULT));
                     }
 
                     //Decrypt
